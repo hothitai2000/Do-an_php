@@ -47,8 +47,8 @@
             echo "Không để trống file ảnh";
         } else {
             $ketnoi = mysqli_connect("localhost", "root", "", "product") or die("connect fail!");
-            $check_manv = "select*from thanhvien where tai_khoan='$taikhoan'";
-            $ketqua = mysqli_query($connect, $check_manv);
+            $check = "select*from thanhvien where tai_khoan='$taikhoan'";
+            $ketqua = mysqli_query($conn, $check);
             $dem = mysqli_num_rows($ketqua);
             if ($dem > 0) {
                 echo "Tài khoản đã tôn tại";
@@ -66,6 +66,8 @@
                     echo "Thêm mới thất bại";
                 }
             }
+            
         }
     }
+    header('loacation:show.php')
     ?>
