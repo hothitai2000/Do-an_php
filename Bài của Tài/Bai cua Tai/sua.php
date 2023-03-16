@@ -5,11 +5,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-
 <body>
     <div class="container">
         <h1>Form Thêm thông tin Nhân viên</h1>
@@ -38,7 +36,7 @@
         </form>
     </div>
     <?php
-    include 'conn.php';
+    include 'connect.php';
     if (isset($_POST["btn"])) {
         $taikhoan = $_POST["tk"];
         $matkhau = $_POST["mk"];
@@ -49,14 +47,14 @@
             echo "Không để trống file ảnh";
         } else {
             $ketnoi = mysqli_connect("localhost", "root", "", "product") or die("connect fail!");
-            $check_manv = "select*from nhanvien where tai_khoan='$taikhoan'";
-            $ketqua = mysqli_query($ketnoi, $check_manv);
+            $check_manv = "select*from thanhvien where tai_khoan='$taikhoan'";
+            $ketqua = mysqli_query($connect, $check_manv);
             $dem = mysqli_num_rows($ketqua);
             if ($dem > 0) {
                 echo "Tài khoản đã tôn tại";
             } else {
                 $target_path = "image/" . basename($ten_file);
-                $sql = "INSERT INTO nhanvien (tai_khoan, passwork, avatar, Ghi_chu) values('$taikhoan', '$matkhau','$target_path','$ghichu')";
+                $sql = "INSERT INTO thanhvien (tai_khoan, passwork, avatar, Ghi_chu) values('$taikhoan', '$matkhau','$target_path','$ghichu')";
                
                 if(mysqli_query($ketnoi, $sql)) {
                     if(move_uploaded_file($fileHA['tmp_name'], "image/".$fileHA['name'])) {
