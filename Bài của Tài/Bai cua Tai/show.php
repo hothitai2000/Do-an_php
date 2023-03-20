@@ -44,7 +44,8 @@
             ?>
         </body>
     </table>
-    <a href="adddsp.php">Thêm Thành Viên Mới</a>
+  
+    <a href="form1.php">Thêm Thành Viên Mới</a>
 
 </body>
 </html>
