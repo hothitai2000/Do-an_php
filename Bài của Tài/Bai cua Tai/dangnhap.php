@@ -24,7 +24,7 @@
     if(isset($_POST['btn'])){
         $name=mysqli_real_escape_string($conn,$_POST['name']);
         $password=mysqli_real_escape_string($conn,$_POST['password']);
-        $password=($password);
+        // $password=($password);
         $ql= "SELECT * FROM thanhvien WHERE taikhoan='$name' and matkhau='$password'";
         $query =mysqli_query($conn,$ql);
         $num_row=mysqli_num_rows($query);
@@ -35,8 +35,10 @@
         else{
             echo"Tên hoặc mật khẩu không đúng";
         }
+        
 
     }
     ?>
+    <a href="show.php">Trang chu</a>
 </body>
 </html>
