@@ -13,16 +13,11 @@
     $sql ="SELECT * FROM thanhvien WHERE id=$id";
     $result=mysqli_query($conn,$sql);
     //in danh sách dữ liệu
-    while($row=mysqli_fetch_assoc($result))
-    {
-        $name=$row["taikhoan"];
-        $pass=$row["matkhau"];
-        $note=$row["ghichu"];
-        $avatar=$row["avatar"];
-    }
+    $row=mysqli_fetch_assoc($result);
+    
    ?>
   <?php
-$conn("localhost","root" ,"","bang_thanhvien");
+
 //kiểm tra người dùng submit form 
 if(isset($_POST['btn']))
 {
@@ -42,7 +37,7 @@ else{
 
 ?> 
 
-<form enctype="multipart/form-data" action="" method="post">
+<form enctype="multipart/form-data" action="sua.php" method="post">
         Tai khoan:<input type="text" name="taikhoan" value="<?php echo $row['taikhoan']?>">
         <br>
         <br>
